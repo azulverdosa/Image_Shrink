@@ -1,7 +1,14 @@
-const { app, BrowserWindow, Menu, globalShortcut } = require('electron');
+const path = require('path');
+const os = require('os');
+const { app, BrowserWindow, Menu, globalShortcut, ipcMain, shell } = require('electron');
+const imagemin = require('imagemin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
+const slash = require('slash');
+const log = require('electron-log');
 
 // Set environment you're in
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'production';
 
 // Set what it means to be in Dev Mode
 const isDev = process.env.NODE_ENV !== 'production';
@@ -29,7 +36,7 @@ createMainWindow = () => {
       contextIsolation: false,
     },
   });
-
+  //set dev tools to show automatically if in development
   if (isDev) {
     mainWindow.webContents.openDevTools();
   }
@@ -94,8 +101,39 @@ const menu = [
     : []),
 ];
 
-// Quit the app when all windows are closed - for Windows or Linux
-// If you want the same fucntion for MacOS remove 'if (!isMac)'
+ipcMain.on('image:minimize', (e, options) => {
+  options.dest = path.join(os.homedir(), 'imageshrink');
+  shrinkImage(options);
+});
+
+// importing imagemin functionality
+async function shrinkImage({ imgPath, quality, dest }) {
+  try {
+    const pngQuality = quality / 100;
+
+    const files = await imagemin([slash(imgPath)], {
+      destination: dest,
+      plugins: [
+        imageminMozjpeg({ quality }),
+        imageminPngquant({
+          quality: [pngQuality, pngQuality],
+        }),
+      ],
+    });
+    // Log files to a foler in Library
+    log.info(files);
+
+    // open folder for file path
+    shell.openPath(dest);
+
+    // send to the Renderer
+    mainWindow.webContents.send('image:done');
+  } catch (err) {
+    log.error(err);
+  }
+}
+
+// Quit the app when all windows are closed - for Windows or Linux - remove 'if (!isMac)' for MacOS
 app.on('window-all-closed', () => {
   if (!isMac) app.quit();
 });
