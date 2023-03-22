@@ -21,10 +21,10 @@
       <p>Choose an image to resize</p>
       <form id="image-form">
         <div class="file-field input-field">
-          <div class="btn">
-            <span>Browse</span>
+          <button class="btn">
+            <span>Browse Files</span>
             <input type="file" id="img" />
-          </div>
+          </button>
 
           <div class="file-path-wrapper">
             <input type="text" class="file-path validate" placeholder="Upload file" />
@@ -51,6 +51,7 @@
       //node integration to use modules
       const path = require('path');
       const os = require('os');
+      const { ipcRenderer } = require('electron');
 
       const form = document.getElementById('image-form');
       const slider = document.getElementById('slider');
@@ -62,11 +63,17 @@
       //Onsubmit
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-
         const imgPath = img.files[0].path;
         const quality = slider.value;
 
-        console.log(imgPath, quality);
+        ipcRenderer.send('image:minimize', { imgPath, quality });
+      });
+
+      // On done - not surrently working "error: - M is not defined" - unsure how to fix
+      ipcRenderer.on('image:done', () => {
+        M.toast({
+          html: `Image resized to ${slider.value}% quality`,
+        });
       });
     </script>
   </body>
