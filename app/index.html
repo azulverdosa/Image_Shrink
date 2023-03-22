@@ -16,7 +16,7 @@
     <!-- the title above will over-write the title you enter as an option in your BrowserWindow-->
   </head>
   <body>
-    <div id="root" class="container center-align">
+    <div class="container center-align">
       <h3><i class="fas fa-images"></i> ImageShrink</h3>
       <p>Choose an image to resize</p>
       <form id="image-form">
@@ -47,5 +47,27 @@
     </div>
 
     <script scr="js/materialize.min.js"></script>
+    <script>
+      //node integration to use modules
+      const path = require('path');
+      const os = require('os');
+
+      const form = document.getElementById('image-form');
+      const slider = document.getElementById('slider');
+      const img = document.getElementById('img');
+
+      document.getElementById('output-path').innerText = path.join(os.homedir(), 'imageshrink');
+      // TODO: allow the user to choose the path
+
+      //Onsubmit
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const imgPath = img.files[0].path;
+        const quality = slider.value;
+
+        console.log(imgPath, quality);
+      });
+    </script>
   </body>
 </html>
