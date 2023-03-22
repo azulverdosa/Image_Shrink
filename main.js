@@ -2,7 +2,9 @@ const { app, BrowserWindow, Menu, globalShortcut } = require('electron');
 
 // Set environment you're in
 process.env.NODE_ENV = 'development';
-const isDev = process.env.NODE != 'production';
+
+// Set what it means to be in Dev Mode
+const isDev = process.env.NODE_ENV !== 'production';
 
 // Set platform you're in
 const isMac = process.platform === 'darwin'; // Note: isMac is used a lot as MacOS is very different from Linux & Win
@@ -16,12 +18,21 @@ let aboutWindow;
 createMainWindow = () => {
   mainWindow = new BrowserWindow({
     title: 'ImageShrink',
-    width: 500,
+    width: isDev ? 800 : 500,
     height: 600,
     icon: `${__dirname}/assets/icons/icon1.png`,
     resizable: isDev,
     backgroundColor: 'white', //initially set for devTools - keeps background white instead of black
+    webPreferences: {
+      //for console error "require is not defined"
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
   });
+
+  if (isDev) {
+    mainWindow.webContents.openDevTools();
+  }
 
   // Load a local file with file protocol
   mainWindow.loadURL(`file://${__dirname}/app/index.html`);
