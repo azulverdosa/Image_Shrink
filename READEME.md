@@ -2,11 +2,7 @@
 
 # Put Your Title Here
 
-Breif description of what the app does.
-
-Example: <br/>
-
-> Live demo [here](http://demoexamplecomingsoon.com 'Not a real link') (coming soon).
+> A desktop app built on Electron for minimizing images. Live demo [here](http://demoexamplecomingsoon.com 'Not a real link') (coming soon).
 
 ## Table of Contents
 
@@ -23,143 +19,61 @@ Example: <br/>
 
 ## General Information
 
-This is where you would mention what the app does in slightly more detail, what problem it solves and why you built it (if they are not the same thing)
-
 Example: <br/>
-This is a simple MERN stack application to track user exercises. It's a helpful app for tracking (exercises or otherwise) and was intended to help me learn Authentiation and continue to work on my fullstack building using the MERN stack.
+This is an app to optimize images for websites. It was my first attempt at Electron and I had some fun with it!
 
 ## Tech Stack
-
-Mention all the languages you used to build the app.
-
-Example: <br/>
 
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?style=for-the-badge&)
 ![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black)
-![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248.svg?style=for-the-badge&logo=MongoDB&logoColor=white)
-![Express](https://img.shields.io/badge/Express-CA4245.svg?style=for-the-badge&logo=Express&logoColor=white)
 
 ## Features
 
-This is where you describe some of the key features of the app and show screenshots of them.
+Main window:
 
-Exercise list:
+![Home Page](assets/screenshots/homepage.png 'Home Page')
 
-- List of exercises
+- Shows where you can brows your files and slider allows you to adjust the size. Output Path box shows you where the resizedimage will be saved:
 
-  ![Home Page](/screenshots/4.png 'Home Page')
-  Description of screenshot here
+Browsing for images:
 
-Exercise log form:
+![Browse](assets/screenshots/browsebuttonaction.png 'Home Page')
 
-- Form to enter workout details:
+- When you click the browse button a folder opens to select your image.
 
-  ![Home Page](/screenshots/4.png 'Home Page')
-  Description of screenshot here
+Image Folder:
 
-Exercise Delete Button:
+![ImageShrink folder](assets/screenshots/imageshrinkfile.png 'Home Page')
 
-- Delete a workout from the database:
+- New folder that images are saved in:
 
-  ![Home Page](/screenshots/4.png 'Home Page')
-  Description of screenshot here
+Custom Menu:
+
+![Menu](assets/screenshots/custommenu.png 'Home Page')
+
+- Menu items created specific for ImageShrink:
+
+Menu Buttons:
+
+![Menue about](assets/screenshots/customabout.png 'Home Page')
+![Menue file](assets/screenshots/customfilemenu.png 'Home Page')
+
+- Custom menu lists created specicifally for ImageShrink:
+
+About Window:
+
+![About Window](assets/screenshots/aboutwindow.png 'Home Page')
+
+- When you click the about menu button details about the program are in new window.
+
+Log File:
+
+![log file](assets/screenshots/logfile.png 'Home Page')
+
+- Every images that is saved to the ImageShrink folder and every error that occurs, is logged in a file, that is stored in a Log folder in the computer's Library folder.
 
 ## Setup
-
-Describe how to run the app.
-
-Example: <br/>
-
-### Run Locally
-
-1. Clone repo locally
-2. Change into API folder
-3. Run `npm install` in your bash/command line
-4. Change into UI folder
-5. Run `npm install` in your bash/command line
-6. In the API folder, run `npm run dev` in your bash/command line
-7. Open [http://localhost:4000/hello-world](http://localhost:4000/hello-world) to view it in the browser.
-8. In the UI folder, run `npm start` in your bash/command line
-9. Open [http://localhost:3000](http://localhost:3000) to view it n the browser.
-
-### Available Commands
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-In the project directory, you can run:
-
-`npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.
-
-`npm run dev`
-
-Runs the server. Open [http://localhost:4040](http://localhost:4040) to view it in your browser. I am also using nodemon.
-
-## Usage
-
-How does one go about using it? Provide various use cases and code examples here.
-
-    write-your-code-here
-
-## Project Status
-
-Is the project done yet? Could be, In progress, complete or finishing touches.
-
-Example:
-
-Status: In Progress - Almost done!
-
-## Room for Improvement
-
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Improvement Thoughts:
-
-- Second part of this app is to add authentication for users to have accounts.
-- Styling needs to be updated.
-
-To do:
-
-- [ ] Add Auth
-- [ ] re-design
-
-## Acknowledgements
-
-Is there anyone you worked on the app with? Did you get it from a tutorial? Mention them here.
-
-Example:
-
-Many thanks to [Net Ninja](https://netninja.dev/), this project was based on [this tutorial](https://www.youtube.com/watch?v=98BzS5Oz5E4&list=PL4cUxeGkcC9iJ_KkrkBZWZRHVwnzLIoUE&index=1) from the [Net Ninja YouTube](https://www.youtube.com/@NetNinja) page!
-
-## Contact
-
-Created by [@azulverdosa](ellemocambo@gmail.com) - feel free to contact me!
-
-- [LinkedIn](https://www.linkedin.com/in/avatorre/ 'linked')
-
-## 🤝 Support
-
-Contributions, issues, and feature requests are welcome!
-
-Give a ⭐️ if you like this project!
-
-## License
-
-MIT License Copyright (c) [2023] [AvaElise]
-
-GIVEN TO US
-
-# ImageShrink
-
-A desktop app built on Electron for minimizing images
-
-## Usage
 
 ### Install Dependencies
 
@@ -188,6 +102,40 @@ npm run package-linux
 - Windows: %USERPROFILE%\AppData\Roaming\imageshrink\logs\main.log
 - Linux: ~/.config/imageshrink/logs/main.log
 
-## LICENSE
+## Project Status
 
-MIT
+Status: Complete - Todo list pending
+
+## Room for Improvement
+
+Improvement Thoughts:
+
+- Slider button is not working properly, number measured by the slideris suppose to appear as you move it. I need to fix this.
+
+- the file name that you selext is supposed to reaplce the "Upload File" place holder. I need to fix this.
+  To do:
+
+- [ ] fix slider
+- [ ] display image name
+
+## Acknowledgements
+
+Example:
+
+Many thanks to [Brad Traversy](https://www.traversymedia.com/), this project was based on [this tutorial](https://www.udemy.com/course/electron-from-scratch/).
+
+## Contact
+
+Created by [@azulverdosa](ellemocambo@gmail.com) - feel free to contact me!
+
+- [LinkedIn](https://www.linkedin.com/in/avatorre/ 'linked')
+
+## 🤝 Support
+
+Contributions, issues, and feature requests are welcome!
+
+Give a ⭐️ if you like this project!
+
+## License
+
+MIT License Copyright (c) [2023] [AvaElise]
